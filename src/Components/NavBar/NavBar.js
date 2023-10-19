@@ -1,11 +1,12 @@
 import React from 'react';
-import {  NavLink } from 'react-router-dom';
+import {  NavLink, Outlet } from 'react-router-dom';
 
 function NavBar() {
   return (
-    <div>
+    <React.Fragment>
+            <div>
       <nav className='navbar'>
-        <NavLink to={'/'} className={`nav-item`}>Okoko</NavLink>
+        <h2><NavLink to={'/'} className={`nav-item`}>Okoko</NavLink></h2>
         <ul>
           <li>
             <NavLink to="/" className={`nav-item`}>Home</NavLink>
@@ -25,6 +26,8 @@ function NavBar() {
         </ul>
       </nav>
     </div>
+    <Outlet/>
+    </React.Fragment>
   );
 }
 

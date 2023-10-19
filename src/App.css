@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+body{
+  background-color: rgba(2, 2, 3, 0.1);
+}
+
 .navbar{
   display: flex;
   justify-content: space-between;
@@ -18,11 +22,29 @@ ul{
   display: flex;
 }
 
-.navbar ul li{
+.navbar ul li, .navbar h2{
   margin: 10px;
   font-size: 25px;
 }
 
-.navbar ul li .nav-item{
+a{
   text-decoration: none;
-} 
+}
+
+
+/* Styling the Home Page */
+
+.home-page{
+  height: 100vh;
+  background-image: url('./images/heroImage.jpeg');
+}
+.home-page h2{
+  text-align: center;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 5rem;
+  color: white;
+  transform: translate(-50%, -50%); /*check hoq it works, observe what happens if i remove it. the h2 gets unresponsive horizontally*/
+}
