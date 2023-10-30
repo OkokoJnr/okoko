@@ -1,5 +1,5 @@
 import React from 'react'
-import aboutMe from '../../images/about.jpeg'
+import aboutMe from '../../images/profile.jpeg'
 function About() {
 
     
@@ -14,9 +14,23 @@ function About() {
                     <img src={aboutMe} class= "imageAboutPage" alt=""/>
                 </div>
                 <div class="col-lg-8">
-                    <p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
-                        
-                    </p>
+                    <div>
+                        <p> 
+                            Okoko Godwin-Jnr, a 2023 graduate of Chemical Engineering from the prestigious Federal University of Technology, Minna, Niger State, Nigeria. He ventured into the world of tech few years prior to graduation form university.
+                            He has ever since then dedicate himself to continous learning, growth and personal development.
+                            
+                    
+                        </p>
+                    </div>
+                    <div>
+                        <h2>Tools and Stack Proficiency</h2>
+                        <ul>
+                            <li>HTML and CSS</li>
+                            <li>JavaScript</li>
+                            <li>React</li>
+                            <li>Wordpress</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

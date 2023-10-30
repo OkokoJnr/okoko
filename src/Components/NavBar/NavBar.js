@@ -65,6 +65,11 @@ function Navigation() {
               </a>
             </li>
             <li className="nav-item">
+              <a className="nav-link" href="#certification">
+                Certifications
+              </a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link" href="#contact">
                 Contact
               </a>
