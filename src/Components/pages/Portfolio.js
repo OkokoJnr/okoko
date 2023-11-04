@@ -2,13 +2,19 @@ import React, { Profiler } from "react";
 
 // Portfolio section component
 function PortfolioList() {
-  const [portfolioList, updatePortfolioList] = React.useState([])
-  const username = 'OkokoJnr'
-  React.useEffect(()=>{
-    fetch(`https://api.github.com/users/${username}/repos?ref=codesnippet.io`)
-    .then(res=> res.json())
-    .then(data=>updatePortfolioList(data))
-  },[])
+  const [portfolioList, updatePortfolioList] = React.useState(null)
+
+  // React.useEffect(()=>{
+  //   fetch(`https://api.github.com/users/${process.env.USERNAME}/repos?ref=codesnippet.io`)
+  //   .then(res=> res.json())
+  //   .then(data=>updatePortfolioList(data))
+  // },[])
+
+  if(!portfolioList){
+    return (<>
+      <h1 className="text-center section-heading">Portfolio</h1>
+    </>)
+  }
     return (
       <section id="portfolio">
         <div className="container mt-5">
@@ -28,16 +34,7 @@ function PortfolioList() {
 
 
   function Portfolio({portfolio}){
-    React.useEffect(()=>{
-      const imageName = 'repoImage.png'
-      const Imageurl = `${portfolio.html_url}/blob/main/Images/${imageName}`;
-  
-  const backgroundElement = document.querySelector('.background-image-container');
-  backgroundElement.style.backgroundImage = `url(${Imageurl})`;
-  backgroundElement.style.backgroundSize = 'cover'; // Adjust sizing as needed
-  backgroundElement.style.backgroundRepeat = 'no-repeat';
-  // You can add more styles as needed
-    },[])
+
 
     return(
       <>

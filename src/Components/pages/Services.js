@@ -1,16 +1,18 @@
-import {services} from "../../utils/data";
+import React from "react";
+import {services} from '../../utils/data'
 // Services section component
+
 function ServicesList() {
 
     return (
       <section id="services">
-        <div className="container">
+        <div className="container mt-4">
           <h1 className="text-center section-heading">Services</h1>
           <div className="row">
                 {
-                    services.map((service)=>{
-                        return <Service name={service.name} description={service.description}></Service>
-                    })
+                    React.Children.toArray(services.map((service)=>{
+                        return <Service  name={service.name} description={service.description}></Service>
+                    }))
                 }
             </div>
         </div>
@@ -21,7 +23,6 @@ function ServicesList() {
 
 
 function Service({name, description}){
-    console.log('object')
 return (
     <>
         <div className="col-lg-4 mt-4">

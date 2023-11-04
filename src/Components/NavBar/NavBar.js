@@ -8,7 +8,7 @@ function Navigation() {
   const header = document.getElementById('navbar')
   if(header){
     var top = window.scrollY;
-    if(top>=100){
+    if(top>=600){
       header.classList.add('navbarDark');
     }else{
       header.classList.remove('navbarDark');
@@ -30,7 +30,9 @@ function Navigation() {
   return (
     <nav className="navbar navbar-expand-lg fixed-top navbarScroll" id="navbar">
       <div className="container">
+        <h2>
         <a href="#" className="navbar-brand nav-link">&lt;Okoko/&gt;</a>
+        </h2>
         <button
           className="navbar-toggler"
           type="button"
@@ -65,7 +67,7 @@ function Navigation() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#certification">
+              <a className="nav-link" href="#certifications">
                 Certifications
               </a>
             </li>
