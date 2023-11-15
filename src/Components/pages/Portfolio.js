@@ -4,12 +4,55 @@ import React, { Profiler } from "react";
 function PortfolioList() {
   const [portfolioList, updatePortfolioList] = React.useState(null)
 
-  // React.useEffect(()=>{
-  //   fetch(`https://api.github.com/users/${process.env.USERNAME}/repos?ref=codesnippet.io`)
-  //   .then(res=> res.json())
-  //   .then(data=>updatePortfolioList(data))
-  // },[])
+  //
 
+  // async function fetchVercelDeployments() {
+  //   const response = await fetch('https://api.vercel.com/v12/now/deployments', {
+  //     headers: {
+  //       Authorization: `Bearer 9R8E3OADNzGh1pxsOAiWXFcl`,
+  //     },
+  //   });
+  //   const data = await response.json();
+  //   console.log(data)
+  //   return data.deployments;
+  // }
+
+  async function result(){
+   const response =  await fetch(   'https://api.vercel.com/v6/deployments',
+    {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${'9R8E3OADNzGh1pxsOAiWXFcl'}`,
+        }
+    }
+);
+const data = await response.json()
+const latestDeploymentsMap = new Map();
+
+  // Iterate through each deployment and update the latest deployment in the Map
+  data.deployments.forEach((deployment) => {
+    const projectName = deployment.name;
+
+    // If the project is not in the Map or the current deployment is newer, update the Map
+    if (!latestDeploymentsMap.has(projectName) || deployment.created > latestDeploymentsMap.get(projectName).created) {
+      latestDeploymentsMap.set(projectName, deployment);
+    }
+  });
+
+  // Convert the Map values (latest deployments) back to an array
+  const latestDeployments = Array.from(latestDeploymentsMap.values());
+  updatePortfolioList(latestDeployments) ;
+  } 
+
+  
+  React.useEffect(()=>{
+    result()
+  // //  fetch(`https://github.com/OkokoJnr`)
+  //   .then(res=> res.json())
+  //   .then((data)=>{
+  //     updatePortfolioList(data)
+  //   })
+  },[])
   if(!portfolioList){
     return (<>
       <h1 className="text-center section-heading">Portfolio</h1>
@@ -35,7 +78,7 @@ function PortfolioList() {
 
   function Portfolio({portfolio}){
 
-
+console.log(portfolio.url)
     return(
       <>
         <div className="col-lg-4 mt-4">
@@ -44,7 +87,7 @@ function PortfolioList() {
                             <h4 className="card-title">{portfolio.name}</h4>
                             <p className="card-text">{portfolio.description}</p>
                             <div className="text-center link-button">
-                                <a href={portfolio.html_url} className="btn btn-success link-button">Link</a>
+                                <a href={portfolio.url} target='_blank' className="btn btn-success link-button">Link</a>
                             </div>
                         </div>
                     </div>
