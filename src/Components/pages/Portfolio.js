@@ -87,7 +87,7 @@ console.log(portfolio.url)
                             <h4 className="card-title">{portfolio.name}</h4>
                             <p className="card-text">{portfolio.description}</p>
                             <div className="text-center link-button">
-                                <a href={portfolio.url} target='_blank' className="btn btn-success link-button">Link</a>
+                                <a href={`/${portfolio.url}`} target='_blank' className="btn btn-success link-button">Link</a>
                             </div>
                         </div>
                     </div>
