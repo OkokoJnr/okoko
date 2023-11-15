@@ -47,8 +47,4 @@ return (
 )
 }
 
-<div className="card-body">
-
-{/* <a href="#" className="card-link">Another link</a> */}
-</div>
 export default CertificationsList

@@ -1,31 +1,22 @@
-import React, { Profiler } from "react";
+import React from "react";
+import { WordPressProjects } from "../../utils/data";
 
 // Portfolio section component
 function PortfolioList() {
   const [portfolioList, updatePortfolioList] = React.useState(null)
 
-  //
-
-  // async function fetchVercelDeployments() {
-  //   const response = await fetch('https://api.vercel.com/v12/now/deployments', {
-  //     headers: {
-  //       Authorization: `Bearer 9R8E3OADNzGh1pxsOAiWXFcl`,
-  //     },
-  //   });
-  //   const data = await response.json();
-  //   console.log(data)
-  //   return data.deployments;
-  // }
-
+  //fetch list of all projects from vercel api
   async function result(){
    const response =  await fetch(   'https://api.vercel.com/v6/deployments',
     {
         method: 'GET',
         headers: {
-            Authorization: `Bearer ${'9R8E3OADNzGh1pxsOAiWXFcl'}`,
+            Authorization: `Bearer ${process.env.REACT_APP_VERCEL_API_KEY}`,
         }
     }
 );
+
+console.log(process.env)
 const data = await response.json()
 const latestDeploymentsMap = new Map();
 
@@ -41,17 +32,12 @@ const latestDeploymentsMap = new Map();
 
   // Convert the Map values (latest deployments) back to an array
   const latestDeployments = Array.from(latestDeploymentsMap.values());
-  updatePortfolioList(latestDeployments) ;
+  updatePortfolioList({...latestDeployments, ...WordPressProjects}) ;
   } 
 
   
   React.useEffect(()=>{
     result()
-  // //  fetch(`https://github.com/OkokoJnr`)
-  //   .then(res=> res.json())
-  //   .then((data)=>{
-  //     updatePortfolioList(data)
-  //   })
   },[])
   if(!portfolioList){
     return (<>

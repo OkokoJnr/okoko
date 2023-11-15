@@ -29,10 +29,13 @@ function Navigation() {
   
   return (
     <nav className="navbar navbar-expand-lg fixed-top navbarScroll" id="navbar">
+      
       <div className="container">
         <h2>
         <a href="#" className="navbar-brand nav-link">&lt;Okoko/&gt;</a>
         </h2>
+
+
         <button
           className="navbar-toggler"
           type="button"

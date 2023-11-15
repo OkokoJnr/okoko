@@ -6,7 +6,7 @@
 }
 
 body{
-  background-color: rgba(2, 2, 3, 0.1);
+  background-color: #008000;
 }
 
 .navbar{
@@ -24,7 +24,7 @@ ul{
   display: flex;
 }
 
-.navbar .container ul li, .navbar .container h2{
+.navbar  ul li{
   margin: 10px;
   font-weight: bold;
   font-size: 30px;
