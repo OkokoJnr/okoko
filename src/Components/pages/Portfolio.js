@@ -5,43 +5,52 @@ import { WordPressProjects } from "../../utils/data";
 function PortfolioList() {
   const [portfolioList, updatePortfolioList] = React.useState(null)
 
+  const [error, setError] = React.useState('')
+
   //fetch list of all projects from vercel api
   async function result(){
-   const response =  await fetch(   'https://api.vercel.com/v6/deployments',
-    {
-        method: 'GET',
-        headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_VERCEL_API_KEY}`,
-        }
-    }
+try{
+  const response =  await fetch(   'https://api.vercel.com/v6/deployments',
+  {
+      method: 'GET',
+      headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_VERCEL_API_KEY}`,
+      }
+  }
 );
-
-console.log(process.env)
 const data = await response.json()
 const latestDeploymentsMap = new Map();
 
-  // Iterate through each deployment and update the latest deployment in the Map
-  data.deployments.forEach((deployment) => {
-    const projectName = deployment.name;
+// Iterate through each deployment and update the latest deployment in the Map
+data.deployments.forEach((deployment) => {
+  const projectName = deployment.name;
 
-    // If the project is not in the Map or the current deployment is newer, update the Map
-    if (!latestDeploymentsMap.has(projectName) || deployment.created > latestDeploymentsMap.get(projectName).created) {
-      latestDeploymentsMap.set(projectName, deployment);
-    }
-  });
+  // If the project is not in the Map or the current deployment is newer, update the Map
+  if (!latestDeploymentsMap.has(projectName) || deployment.created > latestDeploymentsMap.get(projectName).created) {
+    latestDeploymentsMap.set(projectName, deployment);
+  }
+});
 
-  // Convert the Map values (latest deployments) back to an array
-  const latestDeployments = Array.from(latestDeploymentsMap.values());
-  updatePortfolioList({...latestDeployments, ...WordPressProjects}) ;
+// Convert the Map values (latest deployments) back to an array
+const latestDeployments = Array.from(latestDeploymentsMap.values());
+updatePortfolioList({...latestDeployments, ...WordPressProjects}) 
+}
+catch(err){
+
+}
   } 
 
   
-  React.useEffect(()=>{
-    result()
+  React.useEffect(()=>{ 
+    //obtain list of all projects 
+      result()
   },[])
+
+  //
   if(!portfolioList){
     return (<>
       <h1 className="text-center section-heading">Portfolio</h1>
+      <h1><em className='text-center'>Loading...</em></h1>
     </>)
   }
     return (

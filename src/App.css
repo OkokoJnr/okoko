@@ -73,8 +73,9 @@ nav .nav-link:hover{
   width: 100%;
   border: 1px solid red;
   background: url('images/GOTNI.jpg');
-  background-size:contain;
+  background-size:cover;
   position:relative;
+  background-repeat: no-repeat;
 }
 /* text css above hero image*/
 .hero_title {
