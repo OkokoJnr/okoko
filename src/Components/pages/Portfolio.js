@@ -33,7 +33,7 @@ data.deployments.forEach((deployment) => {
 
 // Convert the Map values (latest deployments) back to an array
 const latestDeployments = Array.from(latestDeploymentsMap.values());
-updatePortfolioList({...latestDeployments, ...WordPressProjects}) 
+updatePortfolioList(latestDeployments) 
 }
 catch(err){
 
