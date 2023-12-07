@@ -40,13 +40,13 @@ catch(err){
 }
   } 
 
-  
+  console.log(portfolioList)
   React.useEffect(()=>{ 
     //obtain list of all projects 
       result()
   },[])
 
-  //
+
   if(!portfolioList){
     return (<>
       <h1 className="text-center section-heading">Portfolio</h1>
